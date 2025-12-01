@@ -197,9 +197,9 @@ int main()
             
             
             case 7: {
-                int id;
+                int id = 0;
                 printf("digite o ID da prescricao: ");
-                scanf("%d", id);
+                scanf("%d", &id);
                 limparBufferEntrada();
                 buscaPrescricaoId(id);
                 break;
@@ -226,6 +226,7 @@ int main()
                     printf("Nenhum medicamento com estoque baixo\n");
                     break;
                 }
+                break;
             }
         
             case 0: {
@@ -253,6 +254,7 @@ int main()
 //validação de nome
 int ValNome( char nome[] ){
     int tam = strlen( nome );
+    int val = 0;
 
     //verifica o tamanho
     if( tam < 8 ){
@@ -276,10 +278,10 @@ int ValNome( char nome[] ){
         }
         //verifica se é nome composto
         if( nome[i] == ' ' ){
-            return 1;
+            val = 1;
         }
     }
-
+    return val;
 }
 
 //validação de telefone
@@ -431,7 +433,6 @@ void BuscarResidente( char nome[] ){
 
 //cadastro de medicamentos 
 void CadastroMedicamento(){
-    char searchName[50];
     TpMedicamento novo;
 
     

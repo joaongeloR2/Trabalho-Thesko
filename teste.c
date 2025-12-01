@@ -193,9 +193,9 @@ int main()
             
             
             case 7: {
-                int id = 0;
+                int id;
                 printf("digite o ID da prescricao: ");
-                scanf("%d", &id);
+                scanf("%d", id);
                 limparBufferEntrada();
                 buscaPrescricaoId(id);
                 break;
@@ -249,7 +249,6 @@ int main()
 //validação de nome
 int ValNome( char nome[] ){
     int tam = strlen( nome );
-    int val = 0;
 
     //verifica o tamanho
     if( tam < 8 ){
@@ -273,10 +272,10 @@ int ValNome( char nome[] ){
         }
         //verifica se é nome composto
         if( nome[i] == ' ' ){
-            val++;
+            return 1;
         }
     }
-    return 1;
+
 }
 
 //validação de telefone
@@ -428,6 +427,7 @@ void BuscarResidente( char nome[] ){
 
 //cadastro de medicamentos 
 void CadastroMedicamento(){
+    char searchName[50];
     TpMedicamento novo;
 
     
@@ -566,15 +566,9 @@ void buscaPrescricaoResidente(char nome[]){
         
     do{
         for(int i = 0 ; i < qtd_prescricao ; i++){
-<<<<<<< HEAD
             if(strcmp(listaPrescricao[i].residente.nomeResidente , nome) == 0){
                 printf("PRESCRICAO ENCONTRADA"); 
                 printf("Id prescricao: %d\n", listaPrescricao[i].identificador);
-=======
-            if(strcmp(listaPrescricao[i].nomeResidente.nome , nome)){
-                printf("PRESCRICAO ENCONTRADA"); 
-                printf("Id prescricao: %d\n", listaPrescricao[i].idPrescricao);
->>>>>>> 6c2b5b0a907b4299f48d62573bb00bb739a93a42
                 printf("Residente: %s\n", listaPrescricao[i].residente.nomeResidente);
                 printf("Medicamento: %s\n", listaPrescricao[i].medicamento.medicamento);
                 printf("Dosagem: %d m/g\n", listaPrescricao[i].medicamento.dosagem);
@@ -587,19 +581,11 @@ void buscaPrescricaoResidente(char nome[]){
         }
         
         if(!encontrado){
-<<<<<<< HEAD
             printf("Prescricao nao encontrada para este residente\n");
             printf("Deseja buscar novamente? 1(sim) 2(nao): ");
             
             scanf("%d", &validacao);
             limparBufferEntrada();
-=======
-            printf("Prescricao nao encontrada parta este residente\n");
-            printf("Deseja buscar novamente? 1(sim) 2(nao): ");
-            
-            scanf("%d", &validacao);
-            limparBufferEntrada()
->>>>>>> 6c2b5b0a907b4299f48d62573bb00bb739a93a42
             
             if(validacao == 1){
                 printf("Digite o nome:");
@@ -618,17 +604,10 @@ void buscaPrescricaoId(int id){
     int validacao = 0;
     
     do{
-<<<<<<< HEAD
         for(int i = 0 ; i < qtd_prescricao ; i++){
             if(listaPrescricao[i].identificador == id){
                 printf("PRESCRICAO ENCONTRADA"); 
                 printf("Id prescricao: %d\n", listaPrescricao[i].identificador);
-=======
-        for(int i = 0 ; i < listaPrescricao ; i++){
-            if(listaPrescricao[i].identificador == id){
-                printf("PRESCRICAO ENCONTRADA"); 
-                printf("Id prescricao: %d\n", listaPrescricao[i].idPrescricao);
->>>>>>> 6c2b5b0a907b4299f48d62573bb00bb739a93a42
                 printf("Residente: %s\n", listaPrescricao[i].residente.nomeResidente);
                 printf("Medicamento: %s\n", listaPrescricao[i].medicamento.medicamento);
                 printf("Dosagem: %d m/g\n", listaPrescricao[i].medicamento.dosagem);
@@ -645,21 +624,13 @@ void buscaPrescricaoId(int id){
             printf("Deseja buscar novamente? 1(sim) 2(nao): ");
             
             scanf("%d", &validacao);
-<<<<<<< HEAD
             limparBufferEntrada();
-=======
-            limparBufferEntrada()
->>>>>>> 6c2b5b0a907b4299f48d62573bb00bb739a93a42
             
             if(validacao == 1){
                 printf("Digite o ID:");
                 
                 scanf("%d", &id);
-<<<<<<< HEAD
                 limparBufferEntrada();
-=======
-                limparBufferEntrada()
->>>>>>> 6c2b5b0a907b4299f48d62573bb00bb739a93a42
             }
         }
     
@@ -669,43 +640,18 @@ void buscaPrescricaoId(int id){
 
 
 //estoque baixo de medicamento
-<<<<<<< HEAD
 int lowEstoque(TpPrescricao p){
     //verifica se o residente esta tomando
-=======
-void lowEstoque(TpPrescricao p){
-    //verifica se o resiodente esta tomando
->>>>>>> 6c2b5b0a907b4299f48d62573bb00bb739a93a42
     if(p.tomando == 'N' || p.tomando == 'n'){
         return 0;
     }
     
-<<<<<<< HEAD
     double  limite = p.medicamento.quant_cartela * 0.10;
     
     return(p.quant_cartela <= limite );
 }
 
 
-=======
-    //qtd total da cartela 
-    int total = p.medicamento.quant_cartela;
-    
-    //qtd restante (armazenada na prescricao)
-    int restante = p.quant_cartela
-    
-    //clc 10% do total 
-    double limite = total * 0.10; 
-    
-    //verifica se o restante <= 10%
-    if(restante <= limite){
-        return 1;
-    }else{
-        return 0; 
-    }
-}
-
->>>>>>> 6c2b5b0a907b4299f48d62573bb00bb739a93a42
 //retirando o \n das strings
 void lerString( char str[], int tamanho ){
 
@@ -721,11 +667,3 @@ void limparBufferEntrada(){
     int c;
     while ((c = getchar()) != '\n' && c != EOF){}
 }
-<<<<<<< HEAD
-=======
-
-int main(){
-
-return 0;
-}
->>>>>>> 6c2b5b0a907b4299f48d62573bb00bb739a93a42
